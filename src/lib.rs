@@ -15,31 +15,31 @@ pub struct Tuple {
 }
 
 impl Tuple {
-    const fn new(x: f32, y: f32, z: f32, w: f32) -> Self {
+    pub const fn new(x: f32, y: f32, z: f32, w: f32) -> Self {
         Self { x, y, z, w }
     }
 
-    fn from_point(x: f32, y: f32, z: f32) -> Self {
+    pub fn from_point(x: f32, y: f32, z: f32) -> Self {
         Self { x, y, z, w: 1.0 }
     }
 
-    fn from_vector(x: f32, y: f32, z: f32) -> Self {
+    pub fn from_vector(x: f32, y: f32, z: f32) -> Self {
         Self { x, y, z, w: 0.0 }
     }
 
-    fn is_point(&self) -> bool {
+    pub fn is_point(&self) -> bool {
         self.w == 1.0
     }
 
-    fn is_vector(&self) -> bool {
+    pub fn is_vector(&self) -> bool {
         self.w == 0.0
     }
 
-    fn magnitude(&self) -> f32 {
+    pub fn magnitude(&self) -> f32 {
         (self.x.powi(2) + self.y.powi(2) + self.z.powi(2) + self.w.powi(2)).sqrt()
     }
 
-    fn normalize(&self) -> Self {
+    pub fn normalize(&self) -> Self {
         let magnitude = self.magnitude();
         Self {
             x: self.x / magnitude,
@@ -49,11 +49,11 @@ impl Tuple {
         }
     }
 
-    fn dot(&self, rhs: &Self) -> f32 {
+    pub fn dot(&self, rhs: &Self) -> f32 {
         self.x * rhs.x + self.y * rhs.y + self.z * rhs.z + self.w * rhs.w
     }
 
-    fn cross(&self, rhs: &Self) -> Self {
+    pub fn cross(&self, rhs: &Self) -> Self {
         // FIXME: having a proper type would be much better.
         assert!(self.is_vector() && rhs.is_vector());
 
