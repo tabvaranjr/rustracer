@@ -41,12 +41,12 @@ impl Tuple {
 
     fn normalize(&self) -> Self {
         let magnitude = self.magnitude();
-        Self { 
+        Self {
             x: self.x / magnitude,
             y: self.y / magnitude,
             z: self.z / magnitude,
             w: self.w / magnitude,
-        } 
+        }
     }
 
     fn dot(&self, rhs: &Self) -> f32 {
@@ -56,12 +56,12 @@ impl Tuple {
     fn cross(&self, rhs: &Self) -> Self {
         // FIXME: having a proper type would be much better.
         assert!(self.is_vector() && rhs.is_vector());
-        
+
         Self {
             x: self.y * rhs.z - self.z * rhs.y,
             y: self.z * rhs.x - self.x * rhs.z,
             z: self.x * rhs.y - self.y * rhs.x,
-            w: 0.0
+            w: 0.0,
         }
     }
 }
@@ -441,7 +441,7 @@ mod tests {
         let a = Tuple::from_vector(1.0, 2.0, 3.0);
         let b = Tuple::from_vector(2.0, 3.0, 4.0);
         let expected = 20.0;
-        
+
         assert_eq!(a.dot(&b), expected);
     }
 
