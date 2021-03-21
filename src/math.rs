@@ -6,7 +6,7 @@ pub fn is_approx(a: f32, b: f32, esp: Option<f32>) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use crate::*;
+    use crate::prelude::*;
 
     #[test]
     fn is_approx_inside_epsilon() {

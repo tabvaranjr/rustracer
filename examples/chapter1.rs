@@ -1,4 +1,4 @@
-use rustracer::Tuple;
+use rustracer::tuple::Tuple;
 
 #[derive(Debug)]
 struct Projectile {
